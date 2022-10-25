@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="../static/css/dashboard_style.css">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Your Active Document Workflows </h2>
+					<h5 style="color: #8D8D84;">All initalized purchase order processes for which you are one of the signing members.  </h5>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table">
+						  <thead class="thead-dark">
+						    <tr>
+						      <th>ID</th>
+						      <th>Project Name</th>
+						      <th>Purchaser</th>
+						      <th>Bank/Fintech</th>
+						      <th>Issuer</th>
+							  <th>Step</th>
+							  <th>Status</th>
+								
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr class="alert" role="alert">
+						      <th scope="row"><a href="/home">001</a></th>
+							  <td>The Wall</td>
+						      <td>Microsoft</td>
+						      <td>PaolaOne</td>
+						      <td>Aramco</td>
+						      <td>0 - Client Initialization
+								
+								  
+								</td>
+						      <td class="status_active">Awaiting Purchaser Signature					      	
+				        	</td>
+						    </tr>
+						    						    <tr class="alert" role="alert">
+						      <th scope="row"><a href="/home">001</a></th>
+							  <td>The Wall</td>
+						      <td>Microsoft</td>
+						      <td>PaolaOne</td>
+						      <td>Aramco</td>
+						      <td>0 - Client Initialization
+								
+								  
+								</td>
+						      <td class="status_passive">Awaiting Purchaser Signature					      	
+				        	      </td>
+						    </tr>
+
+						   
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/popper.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/main.js"></script>
+
+	</body>
+</html>
+

@@ -1,0 +1,289 @@
+{% extends "base_nav.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ta3meed Proof of Concept</title>
+    <link rel="icon" href="static/icons/favicon.png" type="image/png" sizes="16x16">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Array Multipurpose Startup Business Template">
+    <meta name="keywords" content="Array HTML Template, Array Startup Business Template, Startup Template">
+    <link href="static/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/animate.css"> <!-- Resource style -->
+    <link rel="stylesheet" href="static/css/owl.carousel.css">
+    <link rel="stylesheet" href="static/css/owl.theme.css">
+    <link rel="stylesheet" href="static/css/ionicons.min.css"> <!-- Resource style -->
+    <link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+  <body>
+
+
+
+        <div class="home"><!-- Hero Section-->
+          <div class="container">
+            <div class="row text-center">
+              <div class="col-md-12">
+                <div class="hero-img wow fadeIn">
+                  <img src="static/images/lucidchart.png" alt="Home" class="img-fluid">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="hero-content wow fadeIn">
+                  <h1>Proof of Concept&nbsp;</h1>
+                  <p>Seamlessly prepare, track, and execute all stages of the purchase order process in a unified portal.</p>
+                  <a class="btn-action js-scroll-trigger" href="#signup">Register now</a>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="client-list wow fadeIn"> </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- Hero End -->
+
+        <div id="about" class="features wow fadeInDown">
+          <div class="container-m">
+            <div class="row text-center">
+              <div class="col-md-12">
+                <div class="features-intro">
+                  <h2>Welcome to Ta3meed, where workflows vanish.</h2>
+                  <p>We handle every stage of the purchase ordering process, from automated form filling to secure in-browser signing and record keeping.&nbsp; </p>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="feature-list">
+                  <div class="card-icon">
+                    <div class="card-img">
+                      <img src="static/icons/a1.png" width="35" alt="Feature">
+                    </div>
+                  </div>
+                  <div class="card-text">
+                    <h3>Organized</h3>
+                    <p>Manage all communication and information management related to your purchase orders from a single web portal.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="feature-list">
+                  <div class="card-icon">
+                    <div class="card-img">
+                      <img src="static/icons/a2.png" width="35" alt="Feature">
+                    </div>
+                  </div>
+                  <div class="card-text">
+                    <h3>Intelligent</h3>
+                    <p>We prepopulate forms with the relevant information, allowing you at most stages to simply login and sign.&nbsp; &nbsp;</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="feature-list">
+                  <div class="card-icon">
+                    <div class="card-img">
+                      <img src="static/icons/a3.png" width="35" alt="Feature">
+                    </div>
+                  </div>
+                  <div class="card-text">
+                    <h3>Secure</h3>
+                    <p>Our document handling system is</p>
+                    <p>protected by the Oauth2 protocol, ensuring integrity.&nbsp;</p>
+<p>&nbsp;</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="feature-list">
+                  <div class="card-icon">
+                    <div class="card-img">
+                      <img src="static/icons/a4.png" width="35" alt="Feature">
+                    </div>
+                  </div>
+                  <div class="card-text">
+                    <h3>Connected</h3>
+                    <p>Repeat the process with known business partners in only a few clicks.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="feature-list">
+                  <div class="card-icon">
+                    <div class="card-img">
+                      <img src="static/icons/a5.png" width="35" alt="Feature">
+                    </div>
+                  </div>
+                  <div class="card-text">
+                    <h3> Complete</h3>
+                    <p>Every stage  from the initial proposal to the concluding financial transfer is implemented.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="feature-list">
+                  <div class="card-icon">
+                    <div class="card-img">
+                      <img src="static/icons/a6.png" width="35" alt="Feature">
+                    </div>
+                  </div>
+                  <div class="card-text">
+                    <h3>Barely Getting Started&nbsp;</h3>
+                    <p>Stay tuned as  other workflows</p>
+                    <p>you depend on begin to disappear from your desk.&nbsp;</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Features Section -->
+
+
+
+         <!-- Counter Section -->
+         <div class="yd-stats wow fadeIn" id="savings">
+           <div class="container-s">
+             <div class="row text-center">
+               <div class="col-sm-12">
+                 <div class="intro">
+                   <h2>Boost your revenue & cut work hours</h2>
+                   <p>Automated document management leaves you more time to do the things that actually make money.</p>
+                 </div>
+               </div>
+               <div class="col-sm-4">
+                 <div class="counter-up">
+                    <h3><span class="counter">47</span>%</h3>
+                   <div class="counter-text">
+                     <h2>Lesser backlogs</h2>
+                   </div>
+                 </div>
+               </div>
+               <div class="col-sm-4">
+                 <div class="counter-up">
+                    <h3><span class="counter">33</span>%</h3>
+                   <div class="counter-text">
+                     <h2>Higher Profits</h2>
+                   </div>
+                 </div>
+               </div>
+               <div class="col-sm-4">
+                 <div class="counter-up">
+                    <h3><span class="counter">33</span>%</h3>
+                   <div class="counter-text">
+                     <h2>Higher Profits</h2>
+                   </div>
+                 </div>
+               </div>
+               <div class="col-md-12">
+                 
+               </div>
+
+             </div>
+           </div>
+         </div><!-- Counter Section Ends -->x
+
+        <!-- Array Pricing Section -->
+        <div id="pricing" class="pricing-section text-center">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="pricing-intro wow fadeInDown">
+                  <h1>Pricing.</h1>
+                  <p>
+                    Our plans are designed to meet the requirements of both beginners <br class="hidden-xs">
+                     and large institutions.
+                    Get the right plan that suits you.                 </p>
+                </div>
+                <div class="row">
+                  <div class="col-lg-4 offset-lg-2 col-md-6">
+                   <div class="table-left wow fadeInDown">
+                     <div class="pricing-details">
+                       <h2>Freemium</h2>
+                       <img src="static/icons/free.png" width="60" alt="Icon">
+
+                       <span>$0.00</span>
+                          <ul>
+                           <li>First basic feature </li>
+                           <li>Second feature goes here</li>
+                           <li>Any other third feature</li>
+                           </ul>
+                         <button class="btn-action">Get Plan</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6">
+                    <div class="table-right wow fadeInDown">
+                      <div class="pricing-details">
+                         <h2>Beginner</h2>
+                         <img src="static/icons/paid.png" width="60" alt="Icon">
+                         <span>$24.99</span>
+                         <ul>
+                           <li>First premium feature </li>
+                           <li>Second premium one goes here</li>
+                           <li>Third premium feature here</li>
+                         </ul>
+                         <button class="btn-action">Buy Now</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Array Pricing Ends -->
+
+        <!-- CTA Signup Section -->
+        <div id="signup" class="cta-sm">
+          <div class="container-m text-center">
+            <div class="cta-content">
+               <h4>GRAB TAMEED FOR BEST PRICE TODAY</h4>
+               <h1>Start now and never sweat the details again.&nbsp; &nbsp;&nbsp;</h1>
+               <div class="form wow fadeIn" data-wow-delay="0.2s">
+                <form id="chimp-form" class="subscribe-form wow zoomIn" action="static/php/subscribe.php" method="post" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded" autocomplete="off" novalidate>
+                  <input class="mail" id="chimp-email" type="email" name="email" placeholder="Enter your email address" autocomplete="off">
+                  <input class="submit-button" type="submit" value="Sign up now">
+                </form>
+                <div id="response"></div>
+              </div>
+              <div class="form-note">
+                <p>14-day free trial and no credit card required.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Array Footer Section -->
+        <div class="footer-sm">
+          
+        </div>
+
+
+       <!-- Scroll To Top -->
+        <div id="back-top" class="bk-top">
+          <div class="bk-top-txt">
+             <a class="back-to-top js-scroll-trigger" href="#main">top</a>
+          </div>
+        </div>
+       <!-- Scroll To Top Ends-->
+
+      </div> <!-- Main -->
+    </div><!-- Wrapper -->
+
+
+    <!-- Jquery and Js Plugins -->
+    <script type="text/javascript" src="static/js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="static/js/popper.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="static/js/plugins.js"></script>
+    <script type="text/javascript" src="static/js/custom.js"></script>
+  </body>
+</html>
+
+{% endblock %}

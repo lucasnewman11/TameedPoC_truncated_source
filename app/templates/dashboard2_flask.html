@@ -1,0 +1,106 @@
+{% extends "base_nav.html" %}
+
+{% block content %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+<title>Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="/static/css/dashboard_style.css">
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+			  <div class="col-md-6 text-center mb-5">
+			    					<h3 class="heading-section">{{user_email}} </h3>
+
+					<h2 class="heading-section">Your Active Document Workflows </h2>
+					<h5 style="color: #8D8D84;">All initalized assignment of proceed workflows for which you are one of the signing members.  </h5>
+				</div>
+			</div>
+			<button onclick="window.location.href='/createpo';">Begin New Assigment of Proceeds</button>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table">
+						  <thead class="thead-dark">
+						    <tr>
+						      <th>ID</th>
+						      <th>Purchaser</th>
+						      <th>Bank/FinTech</th>
+						      <th>PO Issuer</th>
+						      <th>Status</th>
+						      </tr>
+						  </thead>
+						  <tbody>
+
+						    {% for order in orders %}
+						    {% if user_email in (order.purchaser.email, order.financier.email, order.issuer.email) %}
+						    <tr class="alert" role="alert">
+						      <th scope="row"><a href="/order_view?no={{order.po_contract_number}}">{{order.po_contract_number}}</a></th>
+						      <td data-title='Purchaser'>
+							{{order.purchaser.company_name}}
+						      </td>
+						      <td data-title='Bank/FinTech'>
+							{{order.financier.company_name}}
+							</td>
+						      <td data-title='PO Issuer'>
+							Greer and Associates
+						      </td>
+						      <!-- <td data-title='Step #'> -->
+						      <!-- 	{{str(order.current_action.step_number) + " - " + order.current_action.name}} -->
+						      <!-- </td> -->
+{% if ((user_email == order.purchaser.email) and (order.aop.signedc == False or order.ccover.signedc == False)) or ((user_email == order.financier.email) and (order.aop.signedb == False or order.bcover.signedb == False)) %}
+						      <td style="color: white; background: #970303; font-size: 18px; transition: color 0.2s ease; transition: background 0.2s ease;" onMouseOut="this.style.background='#970303'; this.style.color='white';" onMouseOver="this.style.background='#00A3E099'; this.style.color='white';" onclick="window.location.href = 'order_view?no={{order.po_contract_number}}';"> You Have Documents to Sign!</td>
+
+						      {% elif (user_email == order.issuer.email) and order.step == 2 %}
+<td style="color: white; background: #970303; font-size: 18px; transition: color 0.2s ease; transition: background 0.2s ease;" onMouseOut="this.style.background='#970303'; this.style.color='white';" onMouseOver="this.style.background='#00A3E099'; this.style.color='white';" onclick="window.location.href = 'order_view?no={{order.po_contract_number}}';"> Your Final Approval Is Required!</td>
+
+
+{% elif order.step == "COMPLETE" %}
+<td style="color: white; background: #00843D; font-size: 18px; transition: color 0.2s ease; transition: background 0.2s ease;"> Approved by PO Issuer</td>
+
+{% elif order.step == "FAILED" %}
+						      <td style="color: white; background: #000; font-size: 18px; transition: color 0.2s ease; transition: background 0.2s ease;"> Rejected by PO Issuer </td>
+
+{% elif order.step == "FAILED" %}
+						      <td style="color: white; background: #000; font-size: 18px; transition: color 0.2s ease; transition: background 0.2s ease;"> Rejected by PO Issuer </td>
+
+						      {% elif order.step == 2 %}
+<td> Awaiting approval from PO Issuer. </td>
+
+
+{% else %}			      
+<td>
+Awaiting signatures from other parties.
+</td>
+{% endif %}
+						    </tr>
+{% endif %}
+{% endfor %}
+						   
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="/static/js/jquery.min.js"></script>
+  <script src="/static/js/popper.js"></script>
+  <script src="/staticp/js/bootstrap.min.js"></script>
+  <script src="/static/js/main.js"></script>
+
+	</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+i{% extends "base_nav.html" %}
+
+{% block content%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/general_form.css">
+<script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous"></script>
+<script src="https://unpkg.com/htmlincludejs"></script>
+
+<form action="" method="post" novalidate>
+ {{ form.csrf_token }}
+ <div class="container">
+
+			<div class="card">
+			
+			  <div class="card-form">
+			    <h1> Register New Company Information </h1>
+			    {% for field_name in form.all_fields %}
+			    {% if field_name != "submit"%}
+			    {% set field = getattr(form, field_name) %}
+
+
+			    <div class="input">
+			      
+			    {{ field.__call__(class_="input-field") }}
+			    <label class="input-label" for="field.id">{{field.label.text}}</label>
+			    </div>
+			    {% endif %}
+			    {% endfor %}
+
+		 
+			  </div>
+			</div>
+</div>
+
+<div class="d-flex">
+<div class="col-2 mx-auto">
+  {{ form.submit(class_="action-button ") }} </div>
+
+		 
+		</form>
+		</div>
+		</div>
+		
+	
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+{% endblock %}

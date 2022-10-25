@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tameed PoC - Order View</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/dashboard_style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    <style> /* Style the button that is used to open and close the collapsible content */
+@font-face{
+    font-family: 'ManifaPro2';
+    src: url("../static/fonts/ManifaPro2 Regular.ttf");}
+
+      * {
+	  box-sizing: border-box;
+	  font-family: ManifaPro2;
+      }
+
+      .button {display: block;
+	       margin: 10px 0;
+	       width: 100%;}
+
+      .document{
+  background-color: #;
+  color: #0033AE;
+  cursor: pointer;
+  padding: 18px;
+  border: 2px solid #0033AE;
+  width: 100%;
+  text-align: center;
+  outline: none;
+  font-size: 15px;}
+      
+.collapsible, .direct {
+  background-color: #0033AE;
+  color: #FFF;
+  cursor: pointer;
+  padding: 18px;
+  border: 2px solid #0033AE;
+  width: 100%;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+}
+
+.backdash {
+  background-color: #5F6369;
+  color: #FFF;
+  cursor: pointer;
+  padding: 18px;
+  border: 2px solid #5F6369;
+  width: 100%;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+}
+
+.reject {
+  background-color: #000;
+  color: #FFF;
+  cursor: pointer;
+  padding: 18px;
+  border: 2px solid #000;
+  width: 100%;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+}
+
+.approve {
+  background-color: #00843D;
+  color: #FFF;
+  cursor: pointer;
+  padding: 18px;
+  border: 2px solid #00843D;
+  width: 100%;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+}
+
+
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover, .direct:hover, .backdash:hover, .approve:hover, .reject:hover{
+    background-color: #00A3E0;
+    color: white;
+    border: 2px solid #00A3E0;
+}
+
+.document:hover {
+    color: #00A3E0;
+    border: 2px solid #00A3E0;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+
+.content {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.collapsible:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: white;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+    </style>
+    
+  </head>
+  <body>
+    <h4 class="mx-auto" style="text-align: center;">{{current_user_email}} -> Order #{{order.po_contract_number}}</h4>
+    <h2 class="mx-auto" style="text-align: center;"> Assignment of Proceeds Portal</h2>
+	<p style="text-align: center; color: #323232;"> Options and informations regarding the selected document workflow. </p>
+    <div class="row">
+      <div class="column col-6">
+
+	<!-- <div class="direct col-12 mx-auto button" onclick = 'toggleOrderInfo()'>Order Information</div> -->
+	<!-- <div class="direct col-12 mx-auto button" onclick = 'toggleProgressLog()'>Progress Log</div> -->
+	{% if order.step == 2 and current_user_email == order.issuer.email %}
+	<div  class="approve button" onclick = "window.location.href='/dashboard?result=approve&no={{order.po_contract_number}}';">Approve Assignment Of Proceeds</div>
+	<div  class="reject button" onclick = "window.location.href='/dashboard?result=reject&no={{order.po_contract_number}}';">Reject Assignment Of Proceeds</div>
+ {% endif %}
+	<div class="document button" onclick = 'toggleAoP()'>Joint Assignment of Proceeds{% if (not order.aop.signedc and current_user_email==order.purchaser.email) or (not order.aop.signedb and current_user_email==order.financier.email) %}<a style="color: red;"> - Please Sign</a> {% endif %}</div>
+	{% if role in ("Purchaser", "Issuer") %}
+	<div class="document button" onclick = 'toggleCcover()'>Client Cover Letter{% if not order.ccover.signedc and current_user_email==order.purchaser.email %}<a style="color: red;"> - Please Sign</a>{% endif %} </div>{% endif %}
+	{% if role in ("Bank/FinTech", "Issuer") %}
+	<div class="document button" onclick = 'toggleBcover()'>Bank/Fintech Cover Letter{% if not order.bcover.signedb and current_user_email==order.financier.email %}<a style="color: red;"> - Please Sign</a> {% endif %}</div>{% endif %}
+
+	<div class="direct button" onclick = 'toggleOrderInfo()'> Order Information</div>
+	<!-- <div class="direct button" onclick = 'toggleProgressLog()'> Progress Log</div> -->
+	<div class="backdash button"  onclick = "window.location.href='/dashboard';">Back to Dashboard</div>
+
+      </div>
+
+      <div class="column col-6">
+	<iframe class="col-12" id="AoP"
+		style="height: 750px; display: block;"
+		src={{aop_url}}></iframe>
+	<iframe class="col-12" id="b-cover"
+		{% if order.current_doc.name == 'Bank/FinTech Cover Letter' %}
+		style="height: 750px; display: block;"
+		{% else %}
+		style="height: 750px; display: none;"
+		{% endif %}
+		src={{bcover_url}}></iframe>
+	<iframe class="col-12" id="c-cover"
+		{% if order.current_doc.name == "Client Cover Letter" %}
+		style="height: 750px; display: block;"
+		{% else %}
+		style="height: 750px; display: none;"
+		{% endif %}
+		src={{ccover_url}}></iframe>
+
+<!-- IE < 10 does not like giving a tbody a height.  The workaround here applies the scrolling to a wrapped <div>. -->
+<!--[if lte IE 9]>
+<div class="old_ie_wrapper">
+<!--<![endif]-->
+<style>
+  html,
+body {
+  margin: 0;
+  background:#fafafa;
+  z-index:-1;
+  position:relative;
+}
+.all {
+  
+}
+
+.shadow-1:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: inherit;
+  height: inherit;
+  z-index: -2;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.13);
+}
+
+.shadow-1:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: inherit;
+  height: inherit;
+  z-index: -2;
+  box-sizing: border-box;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.08);
+}
+
+.shadow-2:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: inherit;
+  height: inherit;
+  z-index: -2;
+  box-sizing: border-box;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.1);
+}
+
+.shadow-2:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: inherit;
+  height: inherit;
+  z-index: -2;
+  box-sizing: border-box;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.shadow-3:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: inherit;
+  height: inherit;
+  z-index: -2;
+  box-sizing: border-box;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.12);
+}
+
+.shadow-3:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: inherit;
+  height: inherit;
+  z-index: -2;
+  box-sizing: border-box;
+  box-shadow: 0 17px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.shadow-4:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: inherit;
+  height: inherit;
+  z-index: -2;
+  box-sizing: border-box;
+  box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.11);
+}
+
+.shadow-4:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: inherit;
+  height: inherit;
+  z-index: -2;
+  box-sizing: border-box;
+  box-shadow: 0 25px 55px 0 rgba(0, 0, 0, 0.11);
+}
+
+.shadow-5:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: inherit;
+  height: inherit;
+  z-index: -2;
+  box-sizing: border-box;
+  box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.1);
+}
+
+.shadow-5:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: inherit;
+  height: inherit;
+  z-index: -2;
+  box-sizing: border-box;
+  box-shadow: 0 40px 77px 0 rgba(0, 0, 0, 0.11);
+}
+
+.card {
+  position: relative;
+  height: 200px;
+  background: #fcfcfc;
+  margin: 20px 40px;
+  transition: 0.4s all;
+}
+
+.card.open {
+  height: 200px;
+  background: #ffffff;
+}
+
+@media only screen and (min-width: 600px) {
+  .card {
+  width: 600px;
+    margin-top:20px;
+    margin-bottom:20px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
+
+@media only screen and (max-device-width: 800px) and (orientation: portrait) {
+  .card {
+    margin: 12px 10px;
+  }
+  }
+
+  dl {
+    display: flex;
+    flex-flow: row wrap;
+    border: solid #333;
+    border-width: 1px 1px 0 0;
+  }
+  dt {
+    flex-basis: 20%;
+    padding: 2px 4px;
+    background: #333;
+    text-align: right;
+    color: #fff;
+  }
+  dd {
+    flex-basis: 70%;
+    flex-grow: 1;
+    margin: 0;
+    padding: 2px 4px;
+    border-bottom: 1px solid #333;
+  }
+
+</style>
+
+<div id="order-info" style="display: none;">
+    	{% set data = order.data() %}
+	{% for key in data %}
+
+      <dl>
+	<dt> {{key}} </dt>
+	<dd> {{data[key]}}</dd>
+
+	          </dl>
+
+      {% endfor %}
+</div>
+
+<div class="all">
+  <div class="cards">
+
+    <div id="progress-log" style="overflow-y:auto; max-height: 750px; min-height: 750px; display: none;">
+    <div class="card shadow-1">
+      <dl>
+    <dt>Step #
+	    <dd>0 - Zero
+    <dt>Name
+      <dd>Purchase Order Workflow Initiation
+	<dt> Role
+	  <dd>Purchaser
+    <dt>Status
+      <dd>{{order.one.status}}
+	<dt>Date Activated
+	    <dd>order.one.
+    <dt>Date Terminated
+	    <dd>World Wide Web Consortium
+  </dl>
+    </div>
+    <div class="card shadow-1">
+      <dl>
+    <dt>Step #
+	    <dd>1 - One
+    <dt>Name
+      <dd>Bank/Fintech Signature of Joint Agreement
+	<dt> Role
+	  <dd>Bank/Fintech
+    <dt>Status
+      <dd>Requires Your Approval
+	<dt>Date Activated
+	    <dd>Universal Resource Locator
+    <dt>Date Terminated
+	    <dd>World Wide Web Consortium
+
+	</dl>
+ </div>
+    <div class="card shadow-1">
+      <dl>
+    <dt>Step #
+	    <dd>2 - Two
+    <dt>Name
+      <dd>Client Signature of Joint Agreement
+	<dt> Role
+	  <dd> Purchaser
+    <dt>Status
+      <dd>Requires Your Approval
+	<dt>Date Activated
+	    <dd>Universal Resource Locator
+    <dt>Date Terminated
+	    <dd>World Wide Web Consortium
+
+	</dl>
+ </div>
+    <div class="card shadow-1">
+      <dl>
+    <dt>Step #
+	    <dd>3 - Three
+    <dt>Name
+      <dd>Client Signature of Cover Letter
+	<dt> Role
+	  <dd> Purchaser
+    <dt>Status
+      <dd>Requires Your Approval
+	<dt>Date Activated
+	    <dd>Universal Resource Locator
+    <dt>Date Terminated
+	    <dd>World Wide Web Consortium
+
+	</dl>
+ </div>
+    <div class="card shadow-1">
+      <dl>
+    <dt>Step #
+	    <dd>4 - Four
+    <dt>Name
+      <dd>Bank/Fintech Signature of Cover Letter
+	<dt>Role
+	  <dd>Bank/Fintech
+    <dt>Status
+      <dd>Requires Your Approval
+	<dt>Date Activated
+	    <dd>Universal Resource Locator
+    <dt>Date Terminated
+	    <dd>World Wide Web Consortium
+
+	</dl>
+ </div>
+    <div class="card shadow-1">
+      <dl>
+    <dt>Step #
+	    <dd>5 - Five
+    <dt>Name
+      <dd>Digital Verifiaction of PO
+	<dt> Role
+	  <dd> Issuer
+    <dt>Status
+      <dd>Requires Your Approval
+	<dt>Date Activated
+	    <dd>Universal Resource Locator
+    <dt>Date Terminated
+	    <dd>World Wide Web Consortium
+
+	</dl>
+ </div>
+    <div class="card shadow-1">
+      <dl>
+    <dt>Step #
+	    <dd>6 - Six
+    <dt>Name
+      <dd>PO Issuer Approval of Transaction
+	<dt> Role
+	  <dd> Issuer
+    <dt>Status
+      <dd>Requires Your Approval
+	<dt>Date Activated
+	    <dd>Universal Resource Locator
+    <dt>Date Terminated
+	    <dd>World Wide Web Consortium
+	</dl>
+ </div></div>
+
+<script src="https://code.jquery.com/jquery.js"></script>
+<script>$('.card').on('click', function() {
+  if ($(this).hasClass('open')) {
+    $('.card').removeClass('open');
+    $('.card').removeClass('shadow-2');
+    $(this).addClass('shadow-1');
+    return false;
+  } else {
+    $('.card').removeClass('open');
+    $('.card').removeClass('shadow-2');
+    $(this).addClass('open');
+    $(this).addClass('shadow-2');
+  }n
+});</script>
+
+<script>
+  $('.card').on('click', function() {
+  if ($(this).hasClass('open')) {
+    $('.card').removeClass('open');
+    $('.card').removeClass('shadow-2');
+    $(this).addClass('shadow-1');
+    return false;
+  } else {
+    $('.card').removeClass('open');
+    $('.card').removeClass('shadow-2');
+    $(this).addClass('open');
+    $(this).addClass('shadow-2');
+  }
+  });
+
+  function toggleAoP() {
+  var x = document.getElementById("AoP");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }};
+
+  function toggleProgressLog() {
+      document.getElementById("progress-log").style.display = "block";
+      document.getElementById("order-info").style.display = "none";
+      document.getElementById("AoP").style.display = "none";
+      document.getElementById("c-cover").style.display = "none";
+      document.getElementById("b-cover").style.display = "none";
+  };
+  
+  function toggleOrderInfo() {
+      document.getElementById("progress-log").style.display = "none";
+      document.getElementById("order-info").style.display = "block";
+      document.getElementById("AoP").style.display = "none";
+      document.getElementById("c-cover").style.display = "none";
+      document.getElementById("b-cover").style.display = "none";
+  };
+
+  function toggleAoP() {
+      document.getElementById("progress-log").style.display = "none";
+      document.getElementById("order-info").style.display = "none";
+      document.getElementById("AoP").style.display = "block";
+      document.getElementById("c-cover").style.display = "none";
+      document.getElementById("b-cover").style.display = "none";
+  };
+
+  function toggleCcover() {
+      document.getElementById("progress-log").style.display = "none";
+      document.getElementById("order-info").style.display = "none";
+      document.getElementById("AoP").style.display = "none";
+      document.getElementById("c-cover").style.display = "block";
+      document.getElementById("b-cover").style.display = "none";
+  };
+
+  
+  function toggleBcover() {
+      document.getElementById("progress-log").style.display = "none";
+      document.getElementById("order-info").style.display = "none";
+      document.getElementById("AoP").style.display = "none";
+      document.getElementById("c-cover").style.display = "none";
+      document.getElementById("b-cover").style.display = "block";
+  };
+
+
+  
+  // if ($(this).hasClass('open')) {
+  //   $('.card').removeClass('open');
+  //   return false;
+  // } else {
+  //   $('.card').removeClass('open');
+  //   $('.card').removeClass('shadow-2');
+  // }
+  // });
+
+</script>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+</script>
+
+<script>
+  // const url = '/order_view';
+  // const data={name:"said",
+  // 	      id:23};
+  // $('#approve').click(function(){
+  //     $.post(url, data, function(data, status){});
+  // });
+
+
+</script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  </body>
+</html>

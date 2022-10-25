@@ -1,0 +1,232 @@
+{% extends "base_nav.html" %}
+
+{% block content%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/general_form.css">
+<script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous"></script>
+<script src="https://unpkg.com/htmlincludejs"></script>
+
+
+<div class="container">
+
+<div class="card">
+	</form>
+		<form class="card-form .col-12">
+			<div class="row">
+				<h2 class="col-lg-6 col-md-12">Create Purchase  Order</h2>
+		<div class="col-lg-6 col-md-12">
+			<div class="input">
+				<!-- <input type="date" id="date_of_po" class="input-field" value="" required/> -->
+				<!-- <label class="input-label" id="date_of_po_label">Date of PO</label> -->
+<input class="input-field" id="date_of_po" required name="date_of_po" type="date" value="" />				<label class="input-label" id="date_of_po_label" for="date_of_po">Date of PO</label>
+
+			</div>
+		</div>
+	</div>
+      <div class="row">
+        <div class="col-lg-6 col-md-12 mt-3">
+		  <div class="input">
+				<input type="text" class="input-field" required/>
+				<label class="input-label">Name of Project</label>
+			</div>
+		  </div>
+        <div class="col-lg-6 col-md-12 mt-3">
+		   <div class="input">
+				<input type="text" class="input-field" required/>
+				<label class="input-label">PO/ Contract Number</label>
+			</div>
+		  </div>
+			</div>
+	<div class="row">
+        <div class="col-lg-6 col-md-12 mt-3"><div class="input">
+				<input type="text" class="input-field" required/>
+				<label class="input-label">Value of PO</label></div>
+      </div>
+			<div class="col-lg-6 col-md-12 mt-3"><div class="input">
+				<input type="text" class="input-field" required/>
+				<label class="input-label">PO Issuer</label></div>
+      </div>
+			</div>
+	</form>
+</div>
+        
+<div class="row">
+	<!-- code here -->
+	<div class="col-lg-6 col-md-12">
+			<h5 class="col-xs-1" align="center">First Party Information</h5>
+			<div class="card">
+			
+		<form class="card-form">
+		  <div class="input">
+
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Company Name</label>
+
+			</div>
+		  <div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Commercial Registry #</label>
+			</div>
+			<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Building #</label>
+			</div>
+				<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Secondary #</label>
+			</div>
+			
+				<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Street Name</label>
+			</div>
+				
+				<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">District</label>
+			</div>
+		
+				<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">City</label>
+			</div>
+	
+				<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Country</label>
+			</div>
+
+				<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Zip Code</label>
+			</div>
+			<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Phone Number</label>
+			</div>
+			<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Email</label>
+			</div>
+			<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">IBAN #</label>
+			</div>
+		 
+		</form>
+		</div>
+		</div>
+		
+		<div class="col-lg-6 col-md-12">
+			<div class="d-flex justify-content-center">
+		
+				<h5 class="my-auto"> Second Party Information:</h5>
+				<html class="my-auto">
+					
+					<head>
+						
+					  <link rel="stylesheet" href="/static/css/eyeglass_search.css">
+						<style>
+						.search-box{
+							color: #0033A0;
+							zoom: 0.4;
+							top: 7px;
+							left: 10px;
+							border: solid 5px #323232;
+							}
+							.autolist{
+								color: #5F6369;
+							}
+						</style>
+						
+					</head>
+					
+					<body >
+						
+						<form class="search-box" autocomplete="off" action="/action_page.php">
+						  <div class="autocomplete">
+							<input id="myInput" type="text" name="myCompany" placeholder="Company">
+							  <button id = "myReset" type="reset"></button>
+						  </div>
+						</form>
+
+						<script src="/static/js/eyeglass_search.js"></script>
+					
+					</body>
+				
+				</html>
+			
+			</div>
+		
+		<div class="card">
+			
+		<form class="card-form">
+		  <div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Company Name</label>
+			</div>
+		  <div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Commercial Registry #</label>
+			</div>
+			<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Building #</label>
+			</div>
+				<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Secondary #</label>
+			</div>
+			
+				<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Street Name</label>
+			</div>
+				
+				<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">District</label>
+			</div>
+		
+				<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">City</label>
+			</div>
+	
+				<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Country</label>
+			</div>
+
+				<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Zip Code</label>
+			</div>
+			<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Phone Number</label>
+			</div>
+			<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">Email</label>
+			</div>
+			<div class="input">
+				<input type="text" class="input-field"  required/>
+				<label class="input-label">IBAN #</label>
+			</div>
+		 
+		</form>
+			</div>
+		</div>
+p</div>
+	</div>
+<div class="col-2 mx-auto">
+	<button class="action-button ">Submit Form</button></div>
+	
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+{% endblock %}

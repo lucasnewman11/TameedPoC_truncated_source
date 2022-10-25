@@ -1,0 +1,115 @@
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Tameed PoC</title>
+	  <style>
+	  
+	  </style>
+
+
+    <!-- Custom styles for this template -->
+  </head>
+    <body>
+    <div>
+      TameedPoC:
+      <a href="/index">Home</a>
+      <a href="/user/Alex">Profile</a>
+      <a href="/test2">Test2</a>
+      <a href="/logout">Logout</a>
+      
+    </div>     
+        
+        
+        
+        
+<div class="container">
+    <h1>Create Purchase Order</h1>
+    <form action="" method="post">
+        <input id="csrf_token" name="csrf_token" type="hidden" value="IjgzOWQyNWZjMWFhZTFjMTIyNThmMDYyZTU2YjNlNGZkODE3OTUwN2Mi.Yw21lg.Tbgo0krlQQsHyey0D19rjnWR31Q">
+
+	
+	
+	<p>
+	
+	<label for="name_of_project">Name of Project</label><br>
+	
+        <input id="name_of_project" name="name_of_project" type="text" value=""><br>
+        
+	</p>
+        
+	
+	<p>
+	
+	<label for="po_contract_number">PO/Contract Number</label><br>
+	
+        <input id="po_contract_number" name="po_contract_number" type="text" value=""><br>
+        
+	</p>
+        
+	
+	<p>
+	
+	<label for="date_of_po">Date of PO</label><br>
+	
+        <input id="date_of_po" name="date_of_po" type="date" value=""><br>
+        
+	</p>
+        
+	
+	<p>
+	
+	<label for="value_of_po">Value of PO</label><br>
+	
+        <input id="value_of_po" name="value_of_po" type="text" value=""><br>
+        
+	</p>
+        
+	
+	<p>
+	
+	<label for="po_issuer">PO Issuer</label><br>
+	
+        <input id="po_issuer" name="po_issuer" type="text" value=""><br>
+        
+	</p>
+        
+	
+	<p>
+	
+	<label for="first_party_info">First Party Information</label><br>
+	
+        <table id="first_party_info"><tr><th><label for="first_party_info-company_name">Company Name</label></th><td><input id="first_party_info-company_name" name="first_party_info-company_name" type="text" value=""></td></tr><tr><th><label for="first_party_info-commercial_registry_number">Commercial Registry Number</label></th><td><input id="first_party_info-commercial_registry_number" name="first_party_info-commercial_registry_number" type="text" value=""></td></tr><tr><th><label for="first_party_info-building_number">Building Number</label></th><td><input id="first_party_info-building_number" name="first_party_info-building_number" type="text" value=""></td></tr><tr><th><label for="first_party_info-secondary_number">Secondary Number</label></th><td><input id="first_party_info-secondary_number" name="first_party_info-secondary_number" type="text" value=""></td></tr><tr><th><label for="first_party_info-street_name">Street Name</label></th><td><input id="first_party_info-street_name" name="first_party_info-street_name" type="text" value=""></td></tr><tr><th><label for="first_party_info-district">District</label></th><td><input id="first_party_info-district" name="first_party_info-district" type="text" value=""></td></tr><tr><th><label for="first_party_info-city">City</label></th><td><input id="first_party_info-city" name="first_party_info-city" type="text" value=""></td></tr><tr><th><label for="first_party_info-country">Country</label></th><td><input id="first_party_info-country" name="first_party_info-country" type="text" value=""></td></tr><tr><th><label for="first_party_info-zip_code">Zip Code</label></th><td><input id="first_party_info-zip_code" name="first_party_info-zip_code" type="text" value=""></td></tr><tr><th><label for="first_party_info-phone_number">Phone Number</label></th><td><input id="first_party_info-phone_number" name="first_party_info-phone_number" type="text" value=""></td></tr><tr><th><label for="first_party_info-email">Email Address</label></th><td><input id="first_party_info-email" name="first_party_info-email" required type="text" value=""></td></tr><tr><th><label for="first_party_info-iban">IBAN Number:</label></th><td><input id="first_party_info-iban" name="first_party_info-iban" type="text" value=""></td></tr></table><input id="first_party_info-csrf_token" name="first_party_info-csrf_token" type="hidden" value="IjgzOWQyNWZjMWFhZTFjMTIyNThmMDYyZTU2YjNlNGZkODE3OTUwN2Mi.Yw21lg.Tbgo0krlQQsHyey0D19rjnWR31Q"><br>
+        
+	</p>
+        
+	
+	<p>
+	
+	<label for="second_party_info">Second Party Information</label><br>
+	
+        <table id="second_party_info"><tr><th><label for="second_party_info-company_name">Company Name</label></th><td><input id="second_party_info-company_name" name="second_party_info-company_name" type="text" value=""></td></tr><tr><th><label for="second_party_info-commercial_registry_number">Commercial Registry Number</label></th><td><input id="second_party_info-commercial_registry_number" name="second_party_info-commercial_registry_number" type="text" value=""></td></tr><tr><th><label for="second_party_info-building_number">Building Number</label></th><td><input id="second_party_info-building_number" name="second_party_info-building_number" type="text" value=""></td></tr><tr><th><label for="second_party_info-secondary_number">Secondary Number</label></th><td><input id="second_party_info-secondary_number" name="second_party_info-secondary_number" type="text" value=""></td></tr><tr><th><label for="second_party_info-street_name">Street Name</label></th><td><input id="second_party_info-street_name" name="second_party_info-street_name" type="text" value=""></td></tr><tr><th><label for="second_party_info-district">District</label></th><td><input id="second_party_info-district" name="second_party_info-district" type="text" value=""></td></tr><tr><th><label for="second_party_info-city">City</label></th><td><input id="second_party_info-city" name="second_party_info-city" type="text" value=""></td></tr><tr><th><label for="second_party_info-country">Country</label></th><td><input id="second_party_info-country" name="second_party_info-country" type="text" value=""></td></tr><tr><th><label for="second_party_info-zip_code">Zip Code</label></th><td><input id="second_party_info-zip_code" name="second_party_info-zip_code" type="text" value=""></td></tr><tr><th><label for="second_party_info-phone_number">Phone Number</label></th><td><input id="second_party_info-phone_number" name="second_party_info-phone_number" type="text" value=""></td></tr><tr><th><label for="second_party_info-email">Email Address</label></th><td><input id="second_party_info-email" name="second_party_info-email" required type="text" value=""></td></tr><tr><th><label for="second_party_info-iban">IBAN Number:</label></th><td><input id="second_party_info-iban" name="second_party_info-iban" type="text" value=""></td></tr></table><input id="second_party_info-csrf_token" name="second_party_info-csrf_token" type="hidden" value="IjgzOWQyNWZjMWFhZTFjMTIyNThmMDYyZTU2YjNlNGZkODE3OTUwN2Mi.Yw21lg.Tbgo0krlQQsHyey0D19rjnWR31Q"><br>
+        
+	</p>
+        
+	
+	<p>
+	
+        <input id="submit" name="submit" type="submit" value="Submit"><br>
+        
+	</p>
+        
+
+    </form>
+</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>

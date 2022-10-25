@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Create Purchase Order</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+
+	{% for field_name in form.field_names %}
+	{% set field = getattr(form, field_name) %}
+	<p>
+	{% if field_name != "submit" %}
+	{{ field.label }}<br>
+	{% endif %}
+        {{ field.__call__() }}<br>
+        {% for error in field.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+	</p>
+        {% endfor %}
+
+    </form>
+</div>
+{% endblock %}

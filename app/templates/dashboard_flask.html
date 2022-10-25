@@ -1,0 +1,75 @@
+        </td>
+        <td data-title='Purchaser'>
+          Microsoft
+        </td>
+	<td data-title='Step #'>
+          0
+        </td>
+	<td data-title='Status'>
+          Waiting for Bank/Fintech 
+        </td>
+        <td class='select'>
+          <a class='button' href='#'>
+	  View
+          </a>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <div class='detail'>
+    <div class='detail-container'>
+      <dl>
+        <dt>
+          Provider Name
+        </dt>
+        <dd>
+          John Doe
+        </dd>
+        <dt>
+          E-mail
+        </dt>
+        <dd>
+          email@example.com
+        </dd>
+        <dt>
+          City
+        </dt>
+        <dd>
+          Detroit
+        </dd>
+        <dt>
+          Phone-Number
+        </dt>
+        <dd>
+          555-555-5555
+        </dd>
+        <dt>
+          Last Update
+        </dt>
+        <dd>
+          Jun 20 2014
+        </dd>
+        <dt>
+          Notes
+        </dt>
+        <dd>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
+        </dd>
+      </dl>
+
+    </div>
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script> $(".button, .close, .myclosebutton").on("click", function (e) {
+  e.preventDefault();
+     $(".detail, html, body").toggleClass("open");
+       $(".myclosebutton").toggleClass("myclose_visible");
+});
+</script>
+ {% endblock %}

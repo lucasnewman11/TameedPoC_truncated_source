@@ -1,0 +1,611 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+  *
+  {
+  box-sizing: border-box;
+}
+
+	@font-face{
+        font-family: 'ManifaPro2';
+		src: url("../static/fonts/ManifaPro2 Regular.ttf");}
+
+.navbar .navbar-brand {
+	font-family: 'ManifaPro2';
+	font-size: 16px;
+	font-weight: 600;
+	letter-spacing: 0;
+	color: #FFF !important;
+	vertical-align: middle;
+}
+.navbar-nav {
+	text-align: center;
+	margin-top: 15px;
+	background: transparent;
+	-webkit-transition: 0.5s all ease; /* For Safari 3.1 to 6.0 */
+	transition: 0.5s all ease;
+}
+
+.navbar-nav .nav-item {
+	margin-right: 0;
+	margin-top: 1.5rem;
+	font-size: 1.5rem;
+	font-weight: 400;
+  text-transform: capitalize;
+  color: #FFF;
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: #FFF;
+	font-weight: 500;
+}
+
+.nav-white .nav-item .nav-link {
+	font-size: 0.92rem;
+	text-transform: capitalize;
+  color: transparent;
+}
+
+.nav-white .nav-item .nav-link:hover {
+  color: #00eaff;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+}
+
+.nav-white .navbar-brand {
+	color: transparent;
+}
+
+@media only screen and (max-width: 768px) {
+
+	.navbar {
+		/*background: rgba(255, 255, 255, 0.99) !important;*/
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.navbar .navbar-nav {
+		padding-bottom: 25px;
+	}
+
+	.nav-white .nav-item .nav-link {
+		color: #4957B8;
+p	}
+
+	.navbar .btn-cta {
+		padding: 0 30px;
+	}
+
+}
+
+@media only screen and (min-width: 240px) {
+
+.navbar.past-main {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	background-color: rgba(255, 255, 255, 0.99) !important;
+	-webkit-box-shadow: 0 2px 3px 0 rgba(96, 96, 96, 0.1);
+	-moz-box-shadow: 0 2px 3px 0 rgba(96, 96, 96, 0.1);
+	box-shadow: 0 2px 3px 0 rgba(96, 96, 96, 0.1);
+}
+
+.navbar.effect-main {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.navbar.past-main .navbar-brand {
+	color: #00843D !important;
+}
+
+.nav-white.past-main .nav-item .nav-link {
+  color: #323232;
+	font-weight:500;
+}
+
+.navbar.past-main .nav-item .nav-link {
+	font-weight: 500;
+}
+
+.nav-white.past-main .navbar-brand {
+	color: #323232;
+}
+
+.navbar.past-main span.navbar-toggler-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.nav-white.effect-main {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;}
+	
+	
+html.open,
+body.open {
+
+  overflow: hidden;
+}
+
+html {
+  padding: 40px;
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  padding: 20px;
+  background-color: #0033A0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  font-size: 1.6rem;
+  font-family: "ManifaPro2", sans-serif;
+}
+
+p {
+  text-align: center;
+  margin: 20px 0 60px;
+}
+
+main {
+  background-color: #2c3845;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 300;
+}
+
+table {
+  display: block;
+}
+
+tr,
+td,
+tbody,
+tfoot {
+  display: block;
+}
+
+thead {
+  display: none;
+}
+
+tr {
+  padding-bottom: 10px;
+}
+
+td {
+  padding: 10px 10px 0;
+  text-align: center;
+}
+td:before {
+  content: attr(data-title);
+  color: #7a91aa;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  padding-right: 10px;
+  display: block;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  font-weight: 700;
+}
+
+thead th {
+  background-color: #202932;
+  color: #fff;
+  border: 1px solid #202932;
+}
+
+tfoot th {
+  display: block;
+  padding: 10px;
+  text-align: center;
+  color: #b8c4d2;
+}
+
+.button {
+  line-height: 1;
+  display: inline-block;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 8px;
+  background-color: #00A3E0;
+  transition-duration: 0.4s
+}
+.button:hover {
+  line-height: 1;
+  display: inline-block;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 5px;
+  color: #323232;
+  padding: 8px;
+  background-color: #FFFFFF;
+}
+
+.select {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #28333f;
+}
+.select:before {
+  display: none;
+}
+
+.detail {
+  background-color: #C0C0C0;
+  width: 100%;
+  height: 100%;
+  padding: 40px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -moz-transition: -moz-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+.detail.open {
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.detail-container {
+  margin: 0 auto;
+  padding: 40px;
+	color: #000;
+}
+
+dl {
+  margin: 0;
+  padding: 0;
+}
+
+dt {
+  font-size: 2.2rem;
+  font-weight: 300;
+}
+
+dd {
+  margin: 0 0 40px 0;
+  font-size: 1.8rem;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #000000;
+  box-shadow: 0 1px 0 #000000;
+}
+
+.close {
+  background: none;
+  padding: 18px;
+  color: #323232;
+  font-weight: 300;
+  border: 1px solid #323232;
+  border-radius: 4px;
+  line-height: 1;
+  font-size: 1.8rem;
+  position: fixed;
+  right: 40px;
+  bottom: 20px;
+  -moz-transition: border 0.3s linear;
+  -o-transition: border 0.3s linear;
+  -webkit-transition: border 0.3s linear;
+  transition: border 0.2s linear;
+	transition: color 0.2s linear;
+	transition: background-color 0.2s linear;
+}
+
+.close:hover, .close:focus {
+background-color: #323232;
+color: #FFF;
+order: 1px solid #323232;
+}
+
+@media (min-width: 460px) {
+  td {
+    text-align: left;
+  }
+  td:before {
+    display: inline-block;
+    text-align: right;
+    width: 140px;
+  }
+
+  .select {
+    padding-left: 160px;
+  }
+}
+
+@media (min-width: 720px) {
+  table {
+    display: table;
+  }
+
+  tr {
+    display: table-row;
+  }
+
+  td,
+  th {
+    display: table-cell;
+  }
+
+  tbody {
+    display: table-row-group;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tfoot {
+    display: table-footer-group;
+  }
+
+  td {
+    border: 1px solid #28333f;
+  }
+  td:before {
+    display: none;
+  }
+
+  td,
+  th {
+    padding: 10px;
+  }
+
+  tr:nth-child(2n + 2) td {
+    background-color: #242e39;
+  }
+
+  tfoot th {
+    display: table-cell;
+  }
+
+  .select {
+    padding: 10px;
+  }
+
+  .myclosebutton{
+      background:transparent;
+      color: #0033AE;
+      border: transparent;
+      padding: 20px;}
+
+  .myclosebutton:hover{
+      background:transparent;
+      color: #0033AE;
+      border: #0033AE;
+      padding: 20px;}
+
+
+  .myclosebutton:focus{
+      background:transparent;
+      color: #0033AE;
+      border: none;
+      padding: 20px;}
+
+  .myclose_visible{
+      background:transparent;
+      color: #FFF;
+      border: transparent;
+      transition: color 1s;
+  }
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #FFF;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 25px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+  }
+
+ .collapsible:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: white;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+	       
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}Vz
+
+  
+}
+</style>
+
+      <nav class="navbar navbar-expand-md navbar-light bg-light fixed-bottom" style="width: 50px; right:100px; z-index: 1;">
+        <div class="container container-s">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto navbar-right">
+	      <div class="myclosebutton">Close</div>    
+            </ul>
+          </div>
+        </div>
+      </nav><!-- Navbar End -->
+<div>
+<h1>
+Your Orders&nbsp; </h1>
+<p>
+# in progress:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # awaiting your action:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </p>
+<main>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Id #
+        </th>
+        <th>
+          Purchaser
+        </th>
+	<th>Issuer</th>
+	<th>Bank/Fintech</th>
+	<th>Step # </th>
+	<th>Status </th>
+	<th></th>
+	
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th colspan='7'>
+	  Current date:  09/03/22
+        </th>
+      </tr>
+    </tfoot>
+    <tbody>
+
+      {% for order in orders %}
+      <tr>
+        <td data-title='Id #'>
+	 {{order.id}}
+        </td>
+        <td data-title='Purchaser'>
+          {{Company.query.get(order.purchaser).company_name}}
+        </td>
+	<td data-title='Bank/Fintech'>
+          {{Company.query.get(order.financier).company_name}}
+        </td>
+        <td data-title='Issuer'>
+          {{Company.query.get(order.issuer).company_name}}
+        </td>
+	<td data-title='Step #'>
+          {{order.step}}
+        </td>
+	<td data-title='Status'>
+          {{order.status}}
+        </td>
+        <td class='select'>
+          <a class='button' href='#'>
+	  View
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+<div class='detail'>
+  <div class="row">
+    <div class="column">
+    	<button type="button" onclick="Iframe1()">Documents</button>
+</div>
+  <div class="column">	<iframe src={{url}} width="100%" id="myIframe1">
+  </iframe>
+</div>
+
+</div>
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script> $(".button, .close, .myclosebutton").on("click", function (e) {
+  e.preventDefault();
+     $(".detail, html, body").toggleClass("open");
+     $(".myclosebutton").toggleClass("myclose_visible")
+     fetch('/fetchtest').then(response => response.json()).then(function(data){document.getElementById("status_test").innerHTML = data['test'];
+									      });
+
+ });
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+
+
+  $('.myIframe').css('height', $(window).height()+'px');
+
+function iFrame1() {
+  var x = document.getElementById("myIframe1");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+  function iFrame2() {
+  var x = document.getElementById("myIframe2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+function iFrame3() {
+  var x = document.getElementById("myIframe3");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+</script>
+
+ {% endblock %}

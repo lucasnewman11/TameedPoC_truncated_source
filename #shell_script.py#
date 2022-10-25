@@ -1,0 +1,17 @@
+o = Order(po_contract_number="42")
+p = Order(po_contract_number="43")
+c = Company(company_name="Aramco")
+d = Company(company_name="PaolaOne")
+e = Company(company_name="Microsoft")
+
+c.orders.append(o)
+o.companies.append(d)
+d.orders.append(p)
+p.companies.append(e)
+e.orders.append(o)
+
+
+for i in (o, p, c, d, e):
+    db.session.add(i)
+db.session.commit()    
+
